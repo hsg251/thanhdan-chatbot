@@ -296,12 +296,20 @@ async function sendMessage(){
 }
 
 // ==================== SIDEBAR EVENTS ====================
-toggleBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+toggleBtn.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+        sidebar.classList.toggle("open");
+    }
+});
 
-document.addEventListener('click', (e) => {
-  if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
-    sidebar.classList.remove('open');
-  }
+document.addEventListener("click", (e) => {
+    if (
+        window.innerWidth <= 768 &&
+        !sidebar.contains(e.target) &&
+        !toggleBtn.contains(e.target)
+    ) {
+        sidebar.classList.remove("open");
+    }
 });
 
 // New Chat
@@ -379,6 +387,20 @@ input.addEventListener('input', () => {
   input.style.height = 'auto';
   input.style.height = Math.min(input.scrollHeight, 140) + 'px';
 });
+
+function checkDevice() {
+    if (window.innerWidth <= 768) {
+        document.body.classList.add("mobile");
+        document.body.classList.remove("desktop");
+    } else {
+        document.body.classList.add("desktop");
+        document.body.classList.remove("mobile");
+        sidebar.classList.remove("open");
+    }
+}
+
+checkDevice();
+window.addEventListener("resize", checkDevice);
 
 // Greeting
 addRow('bot', '[vi] Xin chào! Tôi là **ThanhDan Chatbot**. Tôi có thể giúp gì cho bạn hôm nay? 😊\n [en] Hello! I am **ThanhDan Chatbot**. How can I help you today? 😊');
