@@ -304,3 +304,69 @@ button.send:focus-visible, textarea:focus-visible{outline:2px solid var(--gold);
   .bubble{max-width:86%;}
   .headtext h1{font-size:1.15rem;}
 }
+
+/* mobile */
+@media (max-width:768px){
+
+.layout{
+    display:block;
+}
+
+.slidebar{
+    position:fixed;
+    top:0;
+    left:-280px;
+    width:260px;
+    height:100vh;
+    z-index:1000;
+    transition:.3s;
+}
+
+.slidebar.open{
+    left:0;
+}
+
+.app{
+    width:100%;
+    margin-left:0;
+}
+
+header{
+    padding:14px;
+}
+
+.thread{
+    padding:15px;
+}
+
+.bubble{
+    max-width:90%;
+}
+
+.composer{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:10px;
+}
+
+.thread{
+    padding-bottom:100px;
+}
+
+.logo{
+    font-size:26px;
+}
+
+}
+
+.toggle-sidebar{
+    display:none;
+}
+
+@media (max-width:768px){
+    .toggle-sidebar{
+        display:flex;
+    }
+}
